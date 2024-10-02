@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Tiger Hack</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://www.rummyeast.in/img/topIcon.png" alt="Dragon VS Tiger Logo">
+        </div>
+        <h1>Dragon Tiger Hack</h1>
+        <p class="status">Status : Active</p>
+        <div class="input-group">
+            <span class="icon">🎮</span>
+            <input type="number" id="dragon-card" placeholder="Dragon Cards : enter...">
+        </div>
+        <div class="input-group">
+            <span class="icon">🎮</span>
+            <input type="number" id="tiger-card" placeholder="Tiger Cards : enter...">
+        </div>
+        <div class="input-group">
+            <span class="icon">📃</span>
+            <input type="text" id="result" placeholder="Result :" readonly>
+        </div>
+        <button class="start-hack" id="predict-button">Start Hack</button>
+        <div class="warning">
+            <span class="warning-icon">⚠️</span>
+            <p>Download Rummy East game by clicking on 'Register' button and create a new account in it, if you use this mod in your old account or in any other app then the mod will not work.</p>
+        </div>
+    </div>
+
+    <script>
+        // Predefined 50 outcomes
+        const pattern = [
+            'Tiger', 'Dragon', 'Tiger', 'Tiger', 'Dragon', 'Tiger', 'Tiger', 'Tiger', 'Tiger', 'Dragon',
+            'Tiger', 'Tiger', 'Dragon', 'Tiger', 'Dragon', 'Dragon', 'Tiger', 'Tiger', 'Dragon', 'Dragon',
+            'Dragon', 'Tiger', 'Tiger', 'Tiger', 'Dragon', 'Tiger', 'Tiger', 'Tiger', 'Tiger', 'Dragon',
+            'Dragon', 'Tiger', 'Tiger', 'Tiger', 'Dragon', 'Dragon', 'Dragon', 'Dragon', 'Tiger', 'Dragon',
+            'Dragon', 'Tiger', 'Tiger', 'Tiger', 'Dragon', 'Tiger', 'Dragon', 'Dragon', 'Dragon', 'Dragon'
+        ];
+
+        // Function to calculate prediction
+        function calculatePrediction(dragonCard, tigerCard) {
+            const total = dragonCard + tigerCard;
+            const index = total % pattern.length; // Use modulo to get valid index in the array
+            return pattern[index]; // Return the prediction based on the sum
+        }
+
+        // Handle button click
+        document.getElementById('predict-button').addEventListener('click', function() {
+            const dragonCard = parseInt(document.getElementById('dragon-card').value);
+            const tigerCard = parseInt(document.getElementById('tiger-card').value);
+
+            if (isNaN(dragonCard) || isNaN(tigerCard)) {
+                document.getElementById('result').value = "Please enter valid numbers.";
+            } else {
+                const prediction = calculatePrediction(dragonCard, tigerCard);
+                document.getElementById('result').value = "Prediction: " + prediction;
+            }
+        });
+    </script>
+</body>
+</html>
